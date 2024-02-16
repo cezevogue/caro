@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{ parent() }}CONNEXION
+{% endblock %}
+
+{% block body %}
+	{% if error %}
+		<div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security')|raw }}</div>
+
+	{% endif %}
+
+	 {% if app.user %}
+		<div class="mb-3">
+			Vous êtes connecté(e) comme
+			{{ app.user.userIdentifier }},
+		
+		</div>
+	{% endif %} 
+	<h2 class="text-center h2connexion ">CONNECTEZ-VOUS</h2>
+	<div class="container-connexion">
+		
+		<div class="formsection">
+			<form method="post">
+				<div class="divinput">
+					<label class="pb-2" for="inputEmail">Email</label>
+					<input type="text" id="username" name="_username" value="{{ last_username }}" required autofocus>
+				</div>
+				<div class=" divinput">
+					<label class="pb-2" for="inputPassword">Mot de passe</label>
+					<input type="password" name="_password" placeholder="password" autocomplete="current-password" required/>
+				</div>
+				 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"> 
+				 {# csrf_token est implementer avec security bundle  #}
+				<button type="submit" class="button mt-4">Me connecter</button>
+				<div class="pt-4 pb-3 d-flex justify-content-center">
+					<small>vous n'avez pas de compte?</small>
+					<a class="px-2" href="{{ path('register') }}">M'inscrire</a>
+				</div>
+				<div class=" d-flex justify-content-center">
+				<a href="{{ path('forgotten_password')}}">Mot de passe oublié?</a>
+                </div>
+					<form>
+				</div>
+			</div>
+
+
+		{% endblock %}

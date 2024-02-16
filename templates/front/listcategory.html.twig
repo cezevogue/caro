@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Affichage Catégories - {{ parent() }}{% endblock %}
+
+{% block body %}
+<h1 class="text-center text-dark my-4"> {{ category.title }}</h1>
+
+<div class="container-cards d-flex justify-content-center flex-wrap py-4">
+            
+        {% for product in products %}
+     {% if product.type.title is same as ('PDF')  %}
+     <div class="card-category  my-2 mx-2 ">
+        <div class="card-body ">
+        <embed src="{{ asset('upload/') }}{{product.file}}">
+        <a class="pdf" href="{{ asset('upload/') }}{{product.file}}">{{product.title}} </a>
+        </div>
+     
+     </div>
+      
+ {% elseif product.type.title is same as ('jpg') or product.type.title is same as('png') %}
+      <a href="{{ asset('upload/') }}{{product.file}}"onclick="javascript:window.open(this.href);return(false);"  >
+     
+      <img class="coloriage-img" src="{{ asset('upload/') }}{{product.file}} " width="300" height="300" >
+      </a> 
+
+{% else %}
+
+      <div class="card-category  my-4 mx-4  ">
+       
+        <div class="card-body ">
+        
+        <iframe width="300" height="300" src="{{ product.file }}"></iframe>
+          <div class="btn-card">
+            <a href="{{ product.file }}" class="button m-4">{{ product.title }}</a>
+            </div>
+        </div>
+        </div>
+    {% endif %} 
+     {% endfor %}</div>
+
+{% endblock %}

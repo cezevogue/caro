@@ -1,0 +1,43 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+<div class="abonner-section container bg-light text-center " style="max-width:600px;
+   padding-bottom:30px;">
+    <h1 class="py-4">Modification du support</h1>
+    {{  form_start(dataForm) }}
+    {{ form_row(dataForm.title) }}
+    {{ form_row(dataForm.category) }}
+    {{ form_row(dataForm.type) }}
+    {{ form_row(dataForm.level) }}
+    {{ form_row(dataForm.editFile) }}
+    {{ form_row(dataForm.file) }}
+    
+ //afficher le fichier ce que on veux modifier
+    {% if product.type.title is same as ('PDF')  %}
+      <embed
+	src="{{ asset('upload/') }}{{product.file}}"
+	type="application/pdf"
+	width="100%"
+	height="100%"/>
+
+ {% elseif product.type.title is same as ('jpg') or product.type.title is same as('png') %}
+      <img src="{{ asset('upload/') }}{{product.file}}"/> 
+
+{% else %}
+<iframe width="500" height="320" src="{{ product.file }}">
+    </iframe>
+    {% endif %}
+    
+   
+
+    {{ form_row(dataForm.submit) }}
+    {{ form_end(dataForm) }}
+    </div>
+
+
+{% endblock %}
+

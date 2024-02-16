@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>
+    {% block title %} Admin  {% endblock %} 
+    </title>
+
+    {% block stylesheet %}
+    <link href="{{ asset('assets/CSS/admin.min.css') }}" rel="stylesheet">
+    {% endblock %}
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+
+</head>
+
+
+<body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
+ <!-- Sidebar -->
+    <ul class="navbar-nav  text-white sidebar sidebar-dark accordion" id="accordionSidebar" style="
+    background-color:#4E73DF;">
+
+        <!-- Sidebar -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+            <div class="sidebar-brand-icon rotate-n-15">
+            <img  src="{{ asset('assets/images/user.png') }}" style= "height:50px; ">
+            
+            </div>
+            <div class="sidebar-brand-text mx-3"> Admin</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ path('admin_backoffice') }}" 
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Gestion supports</span>
+            </a>
+        
+        </li>
+                    
+                   
+<hr class="sidebar-divider">
+  
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ path('category') }}" 
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Gestion catégories</span>
+                </a>
+          
+             
+        </li>
+
+        <hr class="sidebar-divider">
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ path('type') }}" 
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Gestion formats</span>
+                </a>
+                <hr class="sidebar-divider">
+
+        </li>
+         <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ path('level') }}" 
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Gestion niveaux</span>
+                </a>
+        </li>
+
+        <hr class="sidebar-divider">
+         <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ path('admin_comments') }}" 
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Gestion commentaires</span>
+                </a>
+          
+             
+        </li>
+
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            
+          
+    
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+<!-- Top Navbar -->
+    <nav class="navbar navbar-light d-flex justify-content-end shadow" >
+      <div>  
+        <a class="text-decoration-none h4" href="{{ path('app_index') }} " >Reviens au site</a>
+        <i class="fa-solid fa-rotate-left fa-lg"></i>
+      </div>
+    </nav>
+<!-- End of Top Navbar -->
+
+            {# afficher les flash messages #}
+            <div class="container col-3 ">
+               
+                {% for type, messages in app.flashes  %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type}}  text-center">
+                       {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="container-fluid">
+  
+                {% block body %}       {% endblock %}
+        </div>
+
+            
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+</div>
+    <script src="https://kit.fontawesome.com/f43726de96.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+
+
+
+

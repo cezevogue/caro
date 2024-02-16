@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Affichage Levels - {{ parent() }}{% endblock %}
+
+{% block body %}
+<h1 class="text-center  py-5">Leçons de {{ level.title }}</h1>
+<div class="container-cards d-flex justify-content-center flex-wrap">
+
+        {% for product in products %}
+     {% if product.category.title is same as ('Leçons')  %}
+
+     <div class="card-category  mx-4 my-4  ">
+        <div class="card-body ">
+        
+        <iframe width="300" height="300" src="{{ product.file }}"></iframe>
+          <div class="btn-card">
+            <a href="{{ product.file }}" class="button m-4">{{ product.title }}</a>
+            </div>
+        </div>
+        </div> 
+        {% endif %}
+     {% endfor %}
+     
+</div>
+{% endblock %}
